@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://p-mart-api.vercel.app/";
+const BASE_URL = "https://p-mart-api.vercel.app/api/";
 // const TOKEN =
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
 //     .accessToken || "";
