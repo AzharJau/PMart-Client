@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { register } from "../redux/apiCalls";
 
 const Container = styled.div`
@@ -62,16 +62,14 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { error } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
   const handleClick = (e) => {
     e.preventDefault();
     register(dispatch, { username, email,password });
   };
-  const Error = styled.span`
-  color: red;
-`;
+;
   return (
     <Container>
       <Wrapper>
@@ -88,7 +86,6 @@ const Register = () => {
           
           <Button onClick={handleClick}>CREATE</Button>
         </Form>
-        {error && <Error>Something went wrong...</Error>} 
       </Wrapper>
     </Container>
   );

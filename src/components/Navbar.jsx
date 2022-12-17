@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { logout } from "../redux/apiCalls";
 import pmart from "../img/Logo.png";
 
-
 const Container = styled.div`
   height: 60px;
   ${mobile({ height: "50px" })}
@@ -57,13 +56,22 @@ const MenuItem = styled.div`
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
-const Button = styled.div`
+const ButtonLogout = styled.div`
   flex: 1;
   text-align: center;
   color: white;
   padding: 5px;
   font-size: 15px;
   background-color: red;
+  cursor: pointer;
+`;
+const ButtonLogin = styled.div`
+  flex: 1;
+  text-align: center;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  background-color: orange;
   cursor: pointer;
 `;
 
@@ -74,6 +82,7 @@ const Navbar = () => {
     logout(dispatch);
   window.location.reload()
   }
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <Container>
       <Wrapper>
@@ -85,14 +94,15 @@ const Navbar = () => {
           </Link>
         </Center>
         <Right>
-        <MenuItem>
-          <Button onClick={handleClick}>LOG OUT</Button>
+        <MenuItem >
+         {user ? <ButtonLogout onClick={handleClick}>LOG OUT</ButtonLogout>:<ButtonLogin><Link to="/Login">LOG IN</Link></ButtonLogin>}
         </MenuItem>
           <Link to="/cart">
           <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
+          {user ?<Badge badgeContent={quantity} color="primary">
               <ShoppingCartOutlined />
-            </Badge>
+            </Badge>: ""}
+
           </MenuItem>
           </Link>
         </Right>

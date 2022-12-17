@@ -13,15 +13,15 @@ const App = () => {
   return (
     <Router>
       <Routes>
-      <Route exact path="/" element={user ? <Home /> :<Login/>} />
-          <Route path="/products" element={user ?<ProductList />:<Login/>} />
-          <Route path="/products/:category" element={user ?<ProductList />:<Login/>} />
-          <Route path="/product/:id" element={user ?<Product />:<Login/>} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/products/:category" element={<ProductList />} />
+          <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={user ?<Cart />:<Login/>} />
           <Route path="/success" element={user ?<Success />:<Login/>} />
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
-        </Routes>
+      </Routes>
     </Router>
   );
 };
